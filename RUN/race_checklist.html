@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>大会当日チェックリスト</title>
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#4F67B1">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Shippori+Antique+B1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body id="top">
+<div class="wrap">
+
+  <!-- Hero -->
+  <section class="hero" aria-labelledby="title">
+    <h1 id="title">今治里山マラソン・チェックリスト</h1>
+    <p class="soft" style="margin:.2em 0 0">目標：<strong>70分以内</strong>／基本心拍 <strong>165bpm未満</strong></p>
+    <div class="badges">
+      <span class="badge">前日準備</span>
+      <span class="badge">当日チェック</span>
+      <span class="badge">タイムライン</span>
+    </div>
+  </section>
+
+  <!-- 前日までの準備 -->
+  <section class="card" aria-labelledby="prep">
+    <h2 id="prep">🌙 前日までに用意しておくもの</h2>
+
+    <h3>🧾 エントリー・受付</h3>
+    <ul class="wk-list" style="list-style:none; margin:6px 0 10px; padding:0">
+      <li><label><input type="checkbox" data-k="p1"> 選手証（はがき）到着確認・<strong>誓約書に署名</strong></label></li>
+      <li><label><input type="checkbox" data-k="p2"> 前日受付の場所と時間の確認（<strong>今治市民会館 13:00–19:00</strong>）</label></li>
+      <li><label><input type="checkbox" data-k="p3"> 当日受付の場所・駐車場を地図アプリに保存</label></li>
+      <li><label><input type="checkbox" data-k="p4"> 交通手段・出発時刻を決定（駐車可 <strong>6:30–14:00</strong>）</label></li>
+    </ul>
+
+    <h3>👟 装備・ウェア</h3>
+    <ul class="wk-list" style="list-style:none; margin:6px 0 10px; padding:0">
+      <li><label><input type="checkbox" data-k="p5"> シューズ（紐は<strong>ダブルノット</strong>練習）＋ソックス（替え）</label></li>
+      <li><label><input type="checkbox" data-k="p6"> ウェア一式（Tシャツ／短パン or タイツ／ウィンドブレーカー）</label></li>
+      <li><label><input type="checkbox" data-k="p7"> キャップ or サングラス／時計・心拍計の充電</label></li>
+      <li><label><input type="checkbox" data-k="p8"> ワセリン・テーピング・日焼け止め</label></li>
+      <li><label><input type="checkbox" data-k="p9"> 手荷物袋に入れる物を仕分け（貴重品は自己管理）</label></li>
+    </ul>
+
+    <h3>🍚 体調・食事</h3>
+    <ul class="wk-list" style="list-style:none; margin:6px 0 10px; padding:0">
+      <li><label><input type="checkbox" data-k="p10"> 最終走は3〜4日前に軽めジョグで終了</label></li>
+      <li><label><input type="checkbox" data-k="p11"> 前夜は炭水化物中心（麺・おにぎり等）／アルコール控えめ</label></li>
+      <li><label><input type="checkbox" data-k="p12"> 爪を整える・靴擦れ対策</label></li>
+      <li><label><input type="checkbox" data-k="p13"> 天気と気温を確認→服装・補給計画を決定</label></li>
+    </ul>
+
+    <div class="chips" style="margin-top:6px">
+      <button class="btn" type="button" id="clearPre">☐ 前日チェックを全解除</button>
+    </div>
+  </section>
+
+  <!-- 当日タイムライン -->
+  <section class="card" aria-labelledby="timetable">
+    <h2 id="timetable">⏱ 当日タイムライン（自動計算）</h2>
+    <p class="soft">スタート時刻を入れると、目安の時刻が自動で入ります（編集可）。</p>
+
+    <div style="display:grid; grid-template-columns:1fr auto; gap:8px; align-items:center">
+      <label for="start" class="soft">スタート時刻（24h）</label>
+      <input id="start" type="time" value="09:20" style="justify-self:end">
+    </div>
+
+    <table style="margin-top:10px">
+      <thead><tr><th>時間</th><th>内容</th></tr></thead>
+      <tbody id="timeline"></tbody>
+    </table>
+
+    <div class="chips" style="margin-top:8px">
+      <button class="btn" type="button" id="recalc">⟳ 再計算</button>
+      <button class="btn" type="button" id="clearAll">☐ すべてのチェックを全解除</button>
+    </div>
+  </section>
+
+  <!-- 当日朝のチェック -->
+  <section class="card" aria-labelledby="day">
+    <h2 id="day">🌅 当日朝のチェック</h2>
+    <ul class="wk-list" style="list-style:none; margin:6px 0 0; padding:0">
+      <li><label><input type="checkbox" data-k="d1"> 起床→水分＋軽食（おにぎり/バナナ）</label></li>
+      <li><label><input type="checkbox" data-k="d2"> 体調・天気・風を確認</label></li>
+      <li><label><input type="checkbox" data-k="d3"> トイレを済ませる（会場は混む）</label></li>
+      <li><label><input type="checkbox" data-k="d4"> <strong>選手証・身分証・筆記具</strong>を持った？</label></li>
+      <li><label><input type="checkbox" data-k="d5"> 時計・心拍計の充電OK／スマホ充電OK</label></li>
+      <li><label><input type="checkbox" data-k="d6"> 補給（ジェル/塩タブ）・ドリンクを用意</label></li>
+    </ul>
+  </section>
+
+  <!-- 会場到着後 -->
+  <section class="card" aria-labelledby="venue">
+    <h2 id="venue">🚩 会場到着後</h2>
+    <ul class="wk-list" style="list-style:none; margin:6px 0 0; padding:0">
+      <li><label><input type="checkbox" data-k="v1"> 受付で選手証提出→ナンバー受取（タグ確認）</label></li>
+      <li><label><input type="checkbox" data-k="v2"> 手荷物袋で預け入れ（貴重品除く）</label></li>
+      <li><label><input type="checkbox" data-k="v3"> ウォームアップ：関節→動的ストレッチ→軽ジョグ10分</label></li>
+      <li><label><input type="checkbox" data-k="v4"> 流し50〜80m×2本／最後のトイレ・給水</label></li>
+      <li><label><input type="checkbox" data-k="v5"> スタート整列：心拍140bpm目安で深呼吸</label></li>
+    </ul>
+  </section>
+
+  <!-- レース中の目安 -->
+  <section class="card" aria-labelledby="race">
+    <h2 id="race">📏 レース中の目安（10km）</h2>
+    <ul class="wk-list" style="list-style:none; margin:6px 0 0; padding:0">
+      <li><label><input type="checkbox" data-k="r1"> 0–2km：7’20〜7’30／HR 140–150（上りは我慢）</label></li>
+      <li><label><input type="checkbox" data-k="r2"> 2–5km：6’55前後／HR 150–160（呼吸を整える）</label></li>
+      <li><label><input type="checkbox" data-k="r3"> 5–8km：7’00〜7’10／HR ≤165（長い上りを腕振りで）</label></li>
+      <li><label><input type="checkbox" data-k="r4"> 8–10km：6’40〜6’50（下りで回収・ピッチ維持）</label></li>
+    </ul>
+  </section>
+
+
+  <!-- ゴール後 -->
+  <section class="card" aria-labelledby="after">
+    <h2 id="after">🎉 ゴール後</h2>
+    <ul class="wk-list" style="list-style:none; margin:6px 0 0; padding:0">
+      <li><label><input type="checkbox" data-k="a1"> 時計停止・心拍確認</label></li>
+      <li><label><input type="checkbox" data-k="a2"> 計測タグ返却・記録証受取り</label></li>
+      <li><label><input type="checkbox" data-k="a3"> 給水・補食（バナナ/ゼリー）・軽ストレッチ</label></li>
+      <li><label><input type="checkbox" data-k="a4"> 着替え・体温を下げすぎない</label></li>
+      <li><label><input type="checkbox" data-k="a5"> Tシャツ/タオル受取り</label></li>
+    </ul>
+  </section>
+
+
+  
+  <footer class="soft" style="margin-top:14px">
+    <div><span class="mono">Generated: 2025-10-10 v1.3</span></div>
+  </footer>
+</div>
+
+
+
+<!-- Tiny JS: timeline + checkbox保存/解除 -->
+<script>
+(function(){
+  // --- timeline ---
+  const start = document.getElementById('start');
+  const timeline = document.getElementById('timeline');
+  const recalc = document.getElementById('recalc');
+
+  function pad(n){ return String(n).padStart(2,'0'); }
+  function parse(v){ const m=/^(\d{1,2}):(\d{2})$/.exec(v||''); return m?{h:+m[1],m:+m[2]}:{h:9,m:20}; }
+  function add(h,m,d){ const t=(h*60+m+d+1440)%1440; return {h:Math.floor(t/60),m:t%60}; }
+  function fmt(t){ return pad(t.h)+':'+pad(t.m); }
+
+  function build(){
+    const s=parse(start.value);
+    const rows=[
+      {d:-120, txt:'起床・水分＋軽い朝食（おにぎり/パン＋塩）'},
+      {d:-90,  txt:'出発・トイレ（会場へ移動）'},
+      {d:-60,  txt:'会場到着・受付・ゼッケン装着・靴紐確認'},
+      {d:-35,  txt:'ウォームアップ開始（関節→動的→軽ジョグ）'},
+      {d:-15,  txt:'流し50〜80m×2／最後のトイレ・給水'},
+      {d:-5,   txt:'スタート整列：心拍140bpm目安で深呼吸'},
+      {d:0,    txt:'レーススタート！'}
+    ];
+    timeline.innerHTML = rows.map(r=>{
+      const t=add(s.h,s.m,r.d);
+      return `<tr><td>${fmt(t)}</td><td>${r.txt}</td></tr>`;
+    }).join('');
+    localStorage.setItem('rc_start', start.value);
+  }
+  (recalc||document.createElement('div')).addEventListener('click', build);
+  start.addEventListener('change', build);
+  start.value = localStorage.getItem('rc_start') || start.value;
+  build();
+
+  // --- checkbox save/restore ---
+  const boxes = Array.from(document.querySelectorAll('input[type="checkbox"][data-k]'));
+  const KEY = 'rc_checks_v2';
+  function save(){ const s={}; boxes.forEach(b=>s[b.dataset.k]=b.checked); localStorage.setItem(KEY, JSON.stringify(s)); }
+  function load(){
+    try{ const s=JSON.parse(localStorage.getItem(KEY)||'{}'); boxes.forEach(b=>{ if(s[b.dataset.k]) b.checked=true; }); }catch{}
+  }
+  boxes.forEach(b=>b.addEventListener('change', save));
+  load();
+
+  // clear buttons
+  document.getElementById('clearPre').addEventListener('click', ()=>{
+    boxes.filter(b=>b.dataset.k.startsWith('p')).forEach(b=>b.checked=false); save();
+  });
+  document.getElementById('clearAll').addEventListener('click', ()=>{
+    boxes.forEach(b=>b.checked=false); save();
+  });
+})();
+</script>
+<!-- Sticky dock -->
+<nav class="dock" aria-label="ページ操作">
+  <div class="inner">
+    <a class="btn" href="index.html">🏃‍♀️ もどる</a>
+    <a class="btn primary" href="#top">⬆︎ 上へ</a>
+  </div>
+</nav>
+
+</body>
+</html>
