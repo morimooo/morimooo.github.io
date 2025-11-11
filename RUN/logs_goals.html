@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>これまでの練習記録と今後の目標（Y M）</title>
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#4F67B1">
+<link rel="stylesheet" href="style.css">
+
+<style>
+  /* ページ固有の最小追加（共通style.cssに依存） */
+  .hero h1{font-size:clamp(16px,3.2vw,20px)}
+  .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px;text-align:center}
+  .stat b{font-size:1.05em}
+  .kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+  .log-table{width:100%;border-collapse:collapse;font-size:.9em}
+  .log-table th,.log-table td{border:1px solid var(--line);padding:8px}
+  .log-table thead th {background: var(--accent-bg, #f2f4ff); color: var(--ink, #333); position: sticky; top: 0;}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{display:inline-flex;align-items:center;padding:.2em .55em;border-radius:999px;background:var(--chip);border:1px solid #e3e8ff;color:var(--chip-text);font-size:.8em}
+  .pill{border-radius:999px;padding:.15em .5em;border:1px solid var(--line);background:var(--mint);font-size:.8em}
+  .badge{vertical-align:middle}
+  .small{font-size:.9em}
+  @media(min-width:760px){ .log-table{font-size:.95em} }
+</style>
+
+</head>
+<body id="top">
+<div class="wrap">
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="title">
+    <h1 id="title">これまでの練習記録と今後の目標 <span class="badge">Y M</span></h1>
+    <p class="soft">里山マラソン10km：<b>70分以内完走</b>（平均 7’00/km 目標）</p>
+    <div class="chips" aria-label="概要">
+      <span class="chip">コース：アップダウンあり</span>
+      <span class="chip">心拍管理：HR165未満中心</span>
+      <span class="chip">直近：LSDで持久力UP</span>
+    </div>
+  </section>
+
+  <!-- サマリーKPI -->
+  <section class="card" aria-label="サマリー">
+    <h2>📊 サマリー</h2>
+    <div class="stat-grid" id="summary">
+      <!-- JSで集計を差し込み -->
+    </div>
+    <p class="soft small" id="lastUpdate"></p>
+  </section>
+
+  <!-- ログ一覧 -->
+  <section class="card" aria-label="練習ログ">
+    <h2>🏃‍♀️ 練習ログ</h2>
+    <table class="log-table" id="logTable">
+<thead>
+  <tr>
+    <th>日付</th>
+    <th>距離</th>
+    <th>時間</th>
+    <th>平均ペース</th>
+    <th>メモ</th>
+  </tr>
+</thead>
+
+      <tbody><!-- JS --></tbody>
+    </table>
+  </section>
+
+  <!-- 直近2週間の計画 -->
+  <section class="card" aria-label="今後2週間の計画">
+    <h2>🗓 今後2週間の計画 <span class="pill">里山10km対策</span></h2>
+    <div class="kpis">
+      <div class="stat"><div>今の実力目安</div><b>5km 35:51 / HR169</b><div class="soft small">本番ペース近い強度で完走</div></div>
+      <div class="stat"><div>狙い</div><b>“ゆっくり長く”</b><div class="soft small">LSDとテンポ走の二刀流</div></div>
+    </div>
+    <ul class="soft" style="margin:.6em 0 0 1em">
+      <li><b>LSD 8〜9km ×1</b>：8’30〜9’00/km・HR145〜155（坂で跳ねたら下りで整える）</li>
+      <li><b>テンポ走 4〜5km ×1</b>：6’40〜6’50/km・HR160〜165（本番ペース慣れ）</li>
+      <li><b>ジョグ 5〜6km ×1</b>：7’30〜8’00/km・会話できる強度（疲労抜き）</li>
+      <li><b>補強</b>：プランク20〜40秒×2、デッドバグ10回×2（就寝前でOK）</li>
+    </ul>
+  </section>
+
+
+
+  <!-- レース戦略（心拍×区間） -->
+  <section class="card" aria-label="レース戦略">
+    <h2>🏁 レース戦略（10km・心拍ガイド）</h2>
+    <ol class="soft">
+      <li><b>0〜3km：</b>上り多め。<u>抑えて</u>7’30〜7’50/km・HR150〜160。</li>
+      <li><b>3〜5km：</b>波打ち区間。7’10〜7’30/km・HR160〜165。</li>
+      <li><b>5〜8km：</b>下り基調で整える。6’40〜7’00/km・HR160〜168。</li>
+      <li><b>8〜10km：</b>ゴールへ。6’30〜6’50/km・HR165〜172以内。</li>
+    </ol>
+    <p class="soft small">合言葉：<b>「登りで我慢、下りで整える」</b>。呼吸は“吐く長め”。</p>
+  </section>
+
+  <!-- モチベ -->
+  <section class="card" aria-label="モチベーション">
+    <h2>🔥</h2>
+    <p class="soft">「ゆっくりでもいい。止まらず前に進むこと。」  
+    坂は呼吸と心拍を整える練習を</b></p>
+  </section>
+
+  <footer class="soft" style="margin-top:12px">
+    <div>Generated: <span id="genDate"></span> · <span class="mono">logs_goals.html</span></div>
+  </footer>
+</div>
+
+<!-- Sticky dock -->
+<nav class="dock" aria-label="ページ操作">
+  <div class="inner">
+    <a class="btn" href="index.html">🏠 もどる</a>
+    <a class="btn primary" href="#top">⬆︎ 上へ</a>
+  </div>
+</nav>
+
+<script>
+/* ===== 練習データ（必要に応じて追記/編集） =====
+  date: YYYY-MM-DD
+  dist_km: 距離(km)
+  time_sec: 総秒
+  pace: "m'ss" 目安（手入力可）
+  hr_avg/hr_max: 心拍
+  note: 任意メモ
+*/
+const runs = [
+  {date:"2025-10-02", dist_km:4.11, time_sec:35*60+21, pace:"8'35", hr_avg:137, hr_max:174, note:"ゆるジョグ"},
+  {date:"2025-10-10", dist_km:5.04, time_sec:34*60+53, pace:"6'55", hr_avg:168, hr_max:179, note:"5kmテスト"},
+  {date:"2025-11-06", dist_km:3.16, time_sec:22*60+34, pace:"7'08", hr_avg:162, hr_max:175, note:"テンポ寄り"},
+  {date:"2025-11-09", dist_km:5.00, time_sec:35*60+51, pace:"6'58", hr_avg:169, hr_max:178, note:"実測5km"},
+  {date:"2025-11-11", dist_km:8.26, time_sec:61*60+39, pace:"7'27", hr_avg:162, hr_max:172, note:"LSD 8km+"},
+{date:"2025-10-23", dist_km:8.49, time_sec:75*60+24, pace:"8'52", hr_avg:153, hr_max:177, note:"LSD・安定ペースで完走"},
+{date:"2025-10-24", dist_km:3.86, time_sec:31*60+26, pace:"8'08", hr_avg:159, hr_max:175, note:"回復ジョグ（フォーム安定）"},
+{date:"2025-11-05", dist_km:3.66, time_sec:29*60+49, pace:"8'08", hr_avg:161, hr_max:173, note:"ウォーミングアップ兼ねたジョグ"}
+
+];
+
+/* ===== 集計 ===== */
+function fmtTime(sec){
+  const h = Math.floor(sec/3600);
+  const m = Math.floor((sec%3600)/60);
+  const s = Math.floor(sec%60);
+  return (h? h+":" : "") + String(m).padStart(2,"0") + ":" + String(s).padStart(2,"0");
+}
+const totalKm = runs.reduce((a,r)=>a+r.dist_km,0);
+const totalSec = runs.reduce((a,r)=>a+r.time_sec,0);
+const best5k = runs
+  .filter(r=>r.dist_km>=4.9 && r.dist_km<=5.3)
+  .sort((a,b)=>a.time_sec - b.time_sec)[0];
+
+document.getElementById("summary").innerHTML = `
+  <div class="stat"><div>総距離</div><b>${totalKm.toFixed(2)} km</b><div class="soft small">記録数：${runs.length}</div></div>
+  <div class="stat"><div>総時間</div><b>${fmtTime(totalSec)}</b><div class="soft small">平均心拍は各記録参照</div></div>
+  <div class="stat"><div>ベスト5km</div><b>${best5k ? fmtTime(best5k.time_sec) : "—"}</b><div class="soft small">${best5k ? best5k.date : ""}</div></div>
+`;
+
+/* ===== テーブル描画 ===== */
+const tbody = document.querySelector("#logTable tbody");
+runs.sort((a,b)=> (a.date<b.date?1:-1)).forEach(r=>{
+  const tr = document.createElement("tr");
+  tr.innerHTML = `
+    <td>${r.date}</td>
+    <td>${r.dist_km.toFixed(2)} km</td>
+    <td>${fmtTime(r.time_sec)}</td>
+    <td>${r.pace}</td>
+    <td>${r.note ?? ""}</td>
+  `;
+  tbody.appendChild(tr);
+});
+
+/* ===== 生成日時 ===== */
+const d = new Date();
+document.getElementById("genDate").textContent =
+  `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+document.getElementById("lastUpdate").textContent = "最終更新：データ配列 runs を編集して更新できます。";
+</script>
+
+
+</body>
+</html>

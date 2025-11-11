@@ -1,204 +1,186 @@
-/* ================================
-   Y M Running UI — Tokenized CSS
-   Colors managed in :root only
-   v3.2
-================================ */
+/* =========================================
+   Y M Running UI — style.css (v4.0)
+   - Colors / lines / shadows are tokenized in :root
+   - Mobile-first, compact, cute-but-clean
+========================================= */
 
-/* === Core Tokens (Light) === */
+/* ---------- TOKENS ---------- */
 :root{
-  /* Brand & text */
-  --color-ink: #222;               /* 本文 */
-  --color-ink-soft: #454545ff;          /* 補足 */
-  --color-accent: #222222;         /* 主アクセント（リンク/見出し） */
+  /* Ink & brand */
+  --ink:#222;                 /* 本文色 */
+  --ink-soft:#555;            /* 補足テキスト */
+  --accent:#222;              /* 見出し/リンクの強調（控えめな黒） */
 
   /* Surfaces */
-  --color-bg: #e7aacdff;             /* 背景 */
-  --color-surface: #fefefe;        /* カード/テーブル面 */
-  --color-hero-grad-top: #d8f7e6ff;  /* ヒーロー上部 */
-  --color-hero-grad-btm: #d8f7e6ff;  /* ヒーロー下部 */
+  --bg:#E7AACD;               /* ページ背景（淡いピンク寄り） */
+  --surface:#FEFEFE;          /* カード面 */
+  --hero-grad-top:#D8F7E6;    /* ヒーロー上 */
+  --hero-grad-btm:#D8F7E6;    /* ヒーロー下 */
 
-  /* Lines & dividers */
-  --color-line: 2px solid #222222;
+  /* Lines (色と太さを分離) */
+  --line-color:#222;
+  --line-1:1px solid var(--line-color);
+  --line-2:2px solid var(--line-color);
 
   /* Chips/Badges */
-  --color-chip-bg: #e5f5ecff;
-  --color-chip-text: #222222;
+  --chip-bg:#E5F5EC;
+  --chip-text:#222;
 
-  /* Table */
-  --color-thead-bg: var(--color-accent);
-  --color-thead-fg: #fefefe;
-  --color-row-alt: #fefefe;
+  /* Table header */
+  --thead-bg:#FFF;            /* 明るいヘッダ */
+  --thead-fg:var(--ink);
 
   /* Dock */
-  --color-dock-bg:#e7aacdff;
+  --dock-bg:#E7AACD;
 
-  /* States */
-  --color-info: #222222;
-  --color-success: #222222;
-  --color-warn: #222222;
+  /* States (色味は控えめに同系) */
+  --info:#222;
+  --success:#222;
+  --warn:#222;
 
+  /* Typography sizes */
+  --fs-h1:18px;
+  --fs-h2:16px;
+  --fs-h3:14px;
 
-  /* Typography tokens */
-  --font-size-h1: 18px;
-  --font-size-h2: 16px;
-  --font-size-h3: 14px;
+  /* Elevation (simple shadow) */
+  --shadow:3px 3px 0 var(--line-color);
 
-
-  /* Elevation (shadows) */
-  --shadow: 3px 3px 0 #222222;
-  
   /* Radii & spacing */
-  --radius-lg: 20px;
-  --radius-md: 16px;
-  --radius-sm: 12px;
-  --space-wrap-bottom: 100px;
+  --radius-lg:20px;
+  --radius-md:16px;
+  --radius-sm:12px;
+  --wrap-bottom:100px;
 
-  /* Typography */
-  --font-body: "Zen Kaku Gothic New","Noto Sans JP","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
-  --font-ui: var(--font-body);
-  --font-mono: ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  /* Fonts */
+  --font-body:"Zen Kaku Gothic New","Noto Sans JP","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+  --font-ui:var(--font-body);
+  --font-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
 
   /* Motion */
-  --easing: cubic-bezier(.2,.6,.2,1);
-  --duration: .25s;
+  --ease:cubic-bezier(.2,.6,.2,1);
+  --dur:.25s;
 
   /* Safe area */
-  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-bottom:env(safe-area-inset-bottom, 0px);
 }
 
-
-/* === Index utilities (add-on) === */
-.hero-emoji{
-  display:block;
-  font-size:40px;
-  line-height:1;
-  margin-bottom:6px;
-}
-
-.btn-grid{
-  display:grid;
-  gap:10px;
-  margin-top:24px;
-}
-@media (min-width:640px){
-  .btn-grid{ grid-template-columns:1fr; } /* シンプル1列のまま。2列にしたければ 1fr 1fr に */
-}
-
-/* ボタン内の説明文（small）の行間微調整 */
-.btn small{
-  display:block;
-  color:var(--color-ink-soft);
-  font-weight:500;
-  font-size:.88em;
-  line-height:1.5;
-  margin-top:2px;
-}
-
-
-/* ================= Base ================= */
+/* ---------- BASE ---------- */
 html{scroll-behavior:smooth;}
 body{
-  margin:0; background:var(--color-bg); color:var(--color-ink);
-  font-family:var(--font-body); font-size:13.8px; line-height:1.8; letter-spacing:.01em;
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:var(--font-body); font-size:13.6px; line-height:1.8; letter-spacing:.01em;
   -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
 }
-.wrap{max-width:740px; margin:auto; padding:24px 16px calc(var(--space-wrap-bottom) + var(--safe-bottom));}
-a{color:var(--color-accent); text-decoration:none;}
+.wrap{max-width:740px; margin:auto; padding:24px 16px calc(var(--wrap-bottom) + var(--safe-bottom));}
+a{color:var(--accent); text-decoration:none;}
 a:hover{text-decoration:underline;}
-.soft{color:var(--color-ink-soft);}
+.soft{color:var(--ink-soft);}
 .mono{font-family:var(--font-mono);}
-
-/* 再利用 */
-h1 { font-size: var(--font-size-h1); }
-h2 { font-size: var(--font-size-h2); }
-h3 { font-size: var(--font-size-h3); }
-
+h1{font-size:var(--fs-h1); margin:0 0 4px;}
+h2{font-size:var(--fs-h2); margin:0 0 8px;}
+h3{font-size:var(--fs-h3); margin:0 0 6px;}
 footer{font-size:11px;}
-/* ================= Hero ================= */
+
+/* ---------- HERO ---------- */
 .hero{
-  background:linear-gradient(180deg,var(--color-hero-grad-top),var(--color-hero-grad-btm));
-  border:var(--color-line); border-radius:var(--radius-lg);
-  padding:18px 16px; box-shadow:var(--shadow); transition:transform var(--duration) var(--easing), box-shadow var(--duration) var(--easing);
+  background:linear-gradient(180deg,var(--hero-grad-top),var(--hero-grad-btm));
+  border:var(--line-2); border-radius:var(--radius-lg);
+  padding:18px 16px; box-shadow:var(--shadow);
+  transition:transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
 }
-.hero:hover{ transform:translateY(-2px); box-shadow:var(--shadow); }
+.hero:hover{ transform:translateY(-2px); }
 .badges{display:flex; gap:8px; flex-wrap:wrap; margin-top:6px;}
 .badge{
-  display:inline-block; background:var(--color-accent); color:#fff; border-radius:999px;
-  padding:.25em .8em; font-size:.8em; letter-spacing:.03em; font-weight:700;
+  display:inline-block; background:var(--accent); color:#fff;
+  border-radius:999px; padding:.25em .8em; font-size:.8em; letter-spacing:.03em; font-weight:700;
 }
+.hero-emoji{display:block; font-size:40px; line-height:1; margin-bottom:6px;}
 
-/* ================= Cards ================= */
+/* ---------- CARDS ---------- */
 .card{
-  background:var(--color-surface); border:var(--color-line); border-radius:var(--radius-md);
+  background:var(--surface); border:var(--line-2); border-radius:var(--radius-md);
   padding:14px 16px; margin:14px 0; box-shadow:var(--shadow);
-  transition:transform var(--duration) var(--easing), box-shadow var(--duration) var(--easing);
+  transition:transform var(--dur) var(--ease);
 }
-.card:hover{ transform:translateY(-1px); box-shadow:var(--shadow
-  ); }
-.card h2{ color:var(--color-accent); margin:0 0 8px; font-size:17px; font-weight:700; }
+.card:hover{ transform:translateY(-1px); }
+.card h2{ color:var(--accent); font-weight:700; }
 
-/* ================= Lists ================= */
+/* ---------- LISTS ---------- */
 ul{margin:.4em 0 0 1.2em; padding:0;}
 li{margin:.3em 0;}
-.hint{color:var(--color-ink-soft); font-size:.88em; font-style:italic;}
+.hint{color:var(--ink-soft); font-size:.88em; font-style:italic;}
 
-/* ================= Tables ================= */
+/* ---------- TABLES ---------- */
 table{width:100%; border-collapse:collapse; font-size:.92rem; margin-top:6px;}
 thead th{
-  background:var(--color-thead-bg); color:var(--color-thead-fg);
-  padding:8px; font-weight:600; text-align:left;
+  background:var(--thead-bg); color:var(--thead-fg);
+  padding:8px; font-weight:600; text-align:left; position:sticky; top:0;
+  border-bottom:var(--line-2);
 }
-tbody td{border-bottom:1px solid var(--color-line); padding:8px; background:var(--color-surface);}
-tbody tr:nth-child(even) td{background:var(--color-row-alt);}
+tbody td{border-bottom:var(--line-1); padding:8px; background:var(--surface);}
+tbody tr:nth-child(even) td{background:#FFF;}
 
-/* ================= Accordion ================= */
+/* ---------- ACCORDION (details/summary) ---------- */
 details{
-  margin:12px 0; border:var(--color-line); border-radius:var(--radius-md); background:var(--color-surface); overflow:hidden;
+  margin:12px 0; border:var(--line-2); border-radius:var(--radius-md);
+  background:var(--surface); overflow:hidden;
 }
 summary{
-  padding:10px 12px; background:var(--color-hero-grad-btm); color:var(--color-accent);
+  padding:10px 12px; background:var(--hero-grad-btm); color:var(--accent);
   font-weight:600; list-style:none; cursor:pointer; letter-spacing:.02em;
 }
 summary::-webkit-details-marker{display:none;}
 summary:hover{ filter:brightness(0.98); }
-.wk-body{ padding:12px 14px 14px; border-top:1px dashed var(--color-line); }
-.wk-title{display:flex; align-items:center; gap:8px; font-weight:700; color:var(--color-ink);}
+.wk-body{ padding:12px 14px 14px; border-top:1px dashed var(--line-color); }
+.wk-title{display:flex; align-items:center; gap:8px; font-weight:700; color:var(--ink);}
 .pill{
-  display:inline-block; border:var(--color-line); border-radius:999px; padding:.2em .7em; font-size:.82em;
-  background:var(--color-surface); color:var(--color-ink);
+  display:inline-block; border:var(--line-1); border-radius:999px; padding:.2em .7em; font-size:.82em;
+  background:var(--surface); color:var(--ink);
 }
-.pill.goal{ color:var(--color-success); border-color:color-mix(in srgb, var(--color-success) 35%, var(--color-line)); }
-.pill.focus{ color:var(--color-accent); border-color:color-mix(in srgb, var(--color-accent) 35%, var(--color-line)); }
+.pill.goal{ color:var(--success); border-color:color-mix(in srgb, var(--success) 35%, var(--line-color)); }
+.pill.focus{ color:var(--accent); border-color:color-mix(in srgb, var(--accent) 35%, var(--line-color)); }
 
-/* ================= Chips ================= */
+/* ---------- CHIPS ---------- */
 .chips{display:flex; flex-wrap:wrap; gap:6px;}
 .chip{
-  background:var(--color-chip-bg); color:var(--color-chip-text);
-  border:var(--color-line); border-radius:999px;
+  background:var(--chip-bg); color:var(--chip-text);
+  border:var(--line-1); border-radius:999px;
   padding:.2em .6em; font-size:.82em; font-weight:600;
 }
 
-/* ================= Dock ================= */
+/* ---------- BUTTONS & GRID ---------- */
+.btn-grid{display:grid; gap:10px; margin-top:24px;}
+@media (min-width:640px){
+  .btn-grid{ grid-template-columns:1fr; } /* 2列にしたければ: 1fr 1fr */
+}
+.btn small{
+  display:block; color:var(--ink-soft); font-weight:500;
+  font-size:.88em; line-height:1.5; margin-top:2px;
+}
+
+/* ---------- DOCK ---------- */
 .dock{
   position:fixed; left:0; right:0; bottom:0;
-  background:var(--color-dock-bg); backdrop-filter:blur(8px);
-  border-top:var(--color-line); padding-bottom:var(--safe-bottom);
+  background:var(--dock-bg); backdrop-filter:blur(8px);
+  border-top:var(--line-2); padding-bottom:var(--safe-bottom);
 }
 .dock .inner{max-width:740px; margin:auto; display:flex; gap:8px; padding:10px 12px;}
 .btn{
-  flex:1; border:var(--color-line); border-radius:var(--radius-sm);
-  padding:10px; background:#fff; color:var(--color-ink); text-align:center; text-decoration:none;
-  font-size:.8rem; font-weight:600; transition:transform var(--duration) var(--easing), box-shadow var(--duration) var(--easing), opacity var(--duration);
+  flex:1; border:var(--line-2); border-radius:var(--radius-sm);
+  padding:10px; background:#fff; color:var(--ink); text-align:center; text-decoration:none;
+  font-size:.8rem; font-weight:600;
+  transition:transform var(--dur) var(--ease), opacity var(--dur);
 }
-.btn.primary{ background:var(--color-accent); color:#fff; border-color:transparent; }
-.btn:hover{ opacity:.95; transform:translateY(-1px); box-shadow:0 2px 0 var(--color-accent); }
+.btn.primary{ background:var(--accent); color:#fff; border-color:transparent; }
+.btn:hover{ opacity:.95; transform:translateY(-1px); }
 
-/* ================= Animations ================= */
+/* ---------- ANIMATIONS ---------- */
 @keyframes fadeIn { from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
-section, .card, .hero{ animation:fadeIn .45s var(--easing); }
+section, .card, .hero{ animation:fadeIn .45s var(--ease); }
 
-/* ================= Responsive ================= */
+/* ---------- RESPONSIVE ---------- */
 @media (min-width:720px){
   body{font-size:14px;}
-  .wrap{padding:28px 20px calc(var(--space-wrap-bottom) + var(--safe-bottom));}
+  .wrap{padding:28px 20px calc(var(--wrap-bottom) + var(--safe-bottom));}
 }
